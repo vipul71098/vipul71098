@@ -1,0 +1,170 @@
+<html>
+    <title></title>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+
+                      <script src="script/angular.min.js"></script>
+                     
+
+    <head></head>
+        <style>
+        
+        .txt{
+            width: 250px;
+            height: 40px;
+            border: 2px solid lightblue;
+            margin-top: 16px;
+            margin-left: 20px;
+            background: #bbce96;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            font-size: 25px;
+            overflow: hidden;
+            
+        }
+        .box{
+            width:300px;
+            height: 320px;
+            border: 1px solid black;
+            margin-left: 450px;
+            background: #1c1d32;
+            border-radius: 5px;
+            margin-top: 100px;
+            padding: 10px;
+        }
+        .btn{
+            width: 50px;
+            height: 35px;
+            padding: 10px;
+            margin-left:15px;
+            margin-top: 10px;
+            background: lightblue;
+            font-size: 16px;
+            text-align: center;
+            background: #373737;
+            color: greenyellow;
+            border-radius: 5px;
+            border: 0px;
+        
+        }
+            .btn:hover{
+                background: black;
+                color: orange;
+            }
+        .btnO{
+            width: 50px;
+            height: 35px;
+            padding: 10px;
+            margin-left:15px;
+            margin-top: 10px;
+            background:#ff4565;
+            font-size: 16px;
+            text-align: center;
+            color: black;
+            border-radius: 5px;
+            border: 0px;
+
+
+        }
+            .btnO:hover{
+                background: orange;
+                color: red;
+            }
+        
+        .btnOOO{
+            width: 260px;
+            height: 35px;
+            padding: 10px;
+            margin-left:15px;
+            margin-top: 10px;
+            background:#ff972d;
+            font-size: 16px;
+            text-align: center;
+            color: white;
+            border-radius: 5px;
+            border: 0px;
+            margin-right:10px;
+
+        }
+            .btnOOO:hover{
+                background: red;
+                color: blue;
+            }
+            h1{
+                margin-top: 30px;
+                font-weight: 800px;
+                color:chartreuse;
+                margin-right: 60px;
+            }
+            .t1{
+                color: orange;
+            }
+            .t2{
+                color: red;
+            }
+        
+
+        
+    </style>
+<body style="background: #11081b;">
+    <h1><center><span class="t1"> Calculator</span> <span class="t2">using</span> AngularJs</center></h1>
+
+         <div class="box" ng-app="mymodule" ng-controller="myctrl">
+          <div class="txt">{{output}}</div>        
+        <button class="btn" ng-click='updateOutput(1)'>1</button>
+        <button  class="btn" ng-click='updateOutput(2)'>2</button>
+        <button class="btn" ng-click='updateOutput(3)'>3</button>
+        <button  class="btno" ng-click='operate("-")'> - </button>
+        <br>
+        <button  class="btn" ng-click='updateOutput(4)'>4</button>
+        <button class="btn"  ng-click='updateOutput(5)'>5</button>
+        <button  class="btn" ng-click='updateOutput(6)'>6</button>
+        <button  class="btno" ng-click='operate("+")'>+</button>
+        <br>
+        <button class="btn" ng-click='updateOutput(7)'>7</button>
+        <button class="btn" ng-click='updateOutput(8)'>8</button>
+        <button class="btn" ng-click='updateOutput(9)'>9</button>
+        <button class="btno" ng-click='operate("/")'>/</button>
+        <br>
+        <button class="btn" ng-click='updateOutput(0)'>0</button>
+        <button class="btn" ng-click='output = 0'>C</button>
+        <button class="btn" ng-click='operate(".")'>.</button>
+
+        <button class="btno" ng-click='operate("*")'>x</button><br>
+                     <button class="btnooo" ng-click='equal()'>=</button>
+
+        </div>
+
+  
+</body>
+        
+</html>
+<script>
+var myapp =angular.module("mymodule",[]);
+myapp.controller("myctrl",function Ctrl($scope) {
+  
+  $scope.output = "0";
+  $scope.num = 0;
+  $scope.updateOutput = function(btn) {
+    if($scope.output == "0") {
+      $scope.output = btn;
+    } else {
+        $scope.output += String(btn);
+    }
+    
+  };
+  
+ $scope.operate = function(op) {
+ $scope.output +=op;
+ $scope.num = $scope.output;
+$scope.output = eval($scope.output)
+     $scope.output +=op;
+ };
+ $scope.equal=function(){
+   $scope.output= eval($scope.output);
+     $scope.num = $scope.output;
+
+ };
+  
+}
+);
+</script>
